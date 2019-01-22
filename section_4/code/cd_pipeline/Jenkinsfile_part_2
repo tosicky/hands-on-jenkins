@@ -74,8 +74,9 @@ def deploy(environment) {
 
 
 def runUnittests() {
-	sh "python3 -m venv env/appHub"
-	sh "source ./env/appHub/bin/activate"
+	sh "whoam1"
+	//sh "python3 -m venv env/appHub"
+	//sh "source ./env/appHub/bin/activate"
 	sh "pip3 install --no-cache-dir -r ./section_4/code/cd_pipeline/requirements.txt"
 	sh "python3 section_4/code/cd_pipeline/tests/test_flask_app.py"
 }
