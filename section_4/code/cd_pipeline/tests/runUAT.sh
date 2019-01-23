@@ -2,7 +2,7 @@
 
 # set variables
 # hostname='localhost'
-hostname=$(hostname -i | awk '{print $1}'
+hostname=$(hostname -i | awk '{print $1}')
 port=$1
 
 # wait for the app to start
