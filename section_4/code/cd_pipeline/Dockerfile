@@ -4,11 +4,6 @@ FROM alpine:3.7
 # Install python 3 and pip
 RUN apk add --update python3
 
-RUN apt-get install -y python3-pip
- 
-# Install app dependencies
-RUN pip3 install --upgrade pip3
-
 # Install Python modules needed by the Python app
 COPY requirements.txt /usr/src/app/
 RUN pip3 install --no-cache-dir -r /usr/src/app/requirements.txt
