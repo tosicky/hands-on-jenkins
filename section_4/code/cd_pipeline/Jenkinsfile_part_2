@@ -1,5 +1,8 @@
 #!/usr/bin/groovy
 
+def devPort = ''
+def stagePort = ''
+
 pipeline {
 	agent any
 
@@ -26,7 +29,11 @@ pipeline {
 		}
 
 		stage("Test - UAT Dev") {
-			steps { runUAT(8888) }
+			steps { 
+				devPort = ['8888', '5000']
+				devPort.each{
+					runUAT(${it}) }
+			}
 		}
 
 		stage("Deploy - Stage") {
