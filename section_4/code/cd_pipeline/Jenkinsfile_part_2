@@ -85,5 +85,5 @@ def runUnittests() {
 
 
 def runUAT(port, envs) {
-	sh "section_4/code/cd_pipeline/tests/runUAT.sh ${port}"
+	sh "section_4/code/cd_pipeline/tests/runUAT.sh ${port} ${envs}"
 }
