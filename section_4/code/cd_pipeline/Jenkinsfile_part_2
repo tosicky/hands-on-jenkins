@@ -1,11 +1,11 @@
 #!/usr/bin/groovy
 
-def devPort = ''
-def stagePort = ''
-
 pipeline {
 	agent any
-
+	
+	def devPort
+	def stagePort
+	
 	options {
 		disableConcurrentBuilds()
 	}
@@ -31,7 +31,7 @@ pipeline {
 		stage("Test - UAT Dev") {
 			steps {
 				script{
-				devPort = ['8888', '5000']
+				devPort = [5000, 8888]
 				devPort.each{
 					runUAT(${it}) }
 				}
