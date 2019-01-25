@@ -35,7 +35,7 @@ pipeline {
 		}
 
 		stage("Test - UAT Stage") {
-			steps { runUAT(5001, 'app_stage') }
+			steps { runUAT(5000, 'app_stage') }
 		}
 
 	}
@@ -52,15 +52,15 @@ def buildApp() {
 def deploy(environment) {
 
 	def containerName = ''
-	def port = ''
+	def port = ''   //if you want to bind to port on host
 
 	if ("${environment}" == 'dev') {
 		containerName = "app_dev"
-		port = "5000"
+		port = "8888"
 	} 
 	else if ("${environment}" == 'stage') {
 		containerName = "app_stage"
-		port = "5001"
+		port = "8889"
 	}
 	else {
 		println "Environment not valid"
@@ -76,7 +76,6 @@ def deploy(environment) {
 
 
 def runUnittests() {
-	sh "whoami"
 	//sh "python3 -m venv env/appHub"
 	//sh "source ./env/appHub/bin/activate"
 	sh "pip3 install --no-cache-dir -r ./section_4/code/cd_pipeline/requirements.txt"
