@@ -30,7 +30,7 @@ pipeline {
 
 		stage("Test - UAT Dev") {
 			steps {
-				scripts{
+				script{
 				devPort = ['8888', '5000']
 				devPort.each{
 					runUAT(${it}) }
