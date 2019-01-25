@@ -26,7 +26,7 @@ pipeline {
 		}
 
 		stage("Test - UAT Dev") {
-			steps {runUAT(5000) }
+			steps {runUAT(5000, 'app_dev') }
 			
 		}
 
@@ -35,7 +35,7 @@ pipeline {
 		}
 
 		stage("Test - UAT Stage") {
-			steps { runUAT(5001) }
+			steps { runUAT(5001, 'app_stage') }
 		}
 
 	}
@@ -84,6 +84,6 @@ def runUnittests() {
 }
 
 
-def runUAT(port) {
+def runUAT(port, envs) {
 	sh "section_4/code/cd_pipeline/tests/runUAT.sh ${port}"
 }
