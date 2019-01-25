@@ -3,7 +3,7 @@
 pipeline {
 	agent any
 	
-	define{
+	define {
 		def devPort
 		def stagePort
 	}
@@ -31,13 +31,8 @@ pipeline {
 		}
 
 		stage("Test - UAT Dev") {
-			steps {
-				script{
-				devPort = [5000, 8888]
-				devPort.each{
-					runUAT(${it}) }
-				}
-			}
+			steps {runUAT(5000) }
+			
 		}
 
 		stage("Deploy - Stage") {
@@ -45,7 +40,7 @@ pipeline {
 		}
 
 		stage("Test - UAT Stage") {
-			steps { runUAT(8889) }
+			steps { runUAT(5001) }
 		}
 
 	}
@@ -66,11 +61,11 @@ def deploy(environment) {
 
 	if ("${environment}" == 'dev') {
 		containerName = "app_dev"
-		port = "8888"
+		port = "5000"
 	} 
 	else if ("${environment}" == 'stage') {
 		containerName = "app_stage"
-		port = "8889"
+		port = "5001"
 	}
 	else {
 		println "Environment not valid"
